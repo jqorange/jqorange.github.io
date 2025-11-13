@@ -2,22 +2,841 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Jiaqi Shen</title>
+  <title>Jiaqi Shen | Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- 可选：用一个舒服的英文字体，不想用可以删掉这行和下面 body 的 font-family -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* 可以在这里统一改配色 */
+      --bg: #050816;
+      --bg-elevated: #0b1020;
+      --bg-soft: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.14);
+      --accent-strong: #0ea5e9;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.25);
+      --radius-lg: 18px;
+      --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.85);
+      --shadow-card: 0 18px 40px rgba(15, 23, 42, 0.65);
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #020617 100%);
+      color: var(--text-main);
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ---------- 顶部导航 ---------- */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(22px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.92), rgba(2, 6, 23, 0.65), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 18px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-circle {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: conic-gradient(from 210deg, #38bdf8, #c4b5fd, #22c55e, #f97316, #38bdf8);
+      position: relative;
+      box-shadow: 0 0 32px rgba(56, 189, 248, 0.6);
+    }
+
+    .nav-logo-circle::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: inherit;
+      background: #020617;
+    }
+
+    .nav-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 4px 8px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: -3px;
+      height: 1.5px;
+      border-radius: 999px;
+      background: linear-gradient(to right, transparent, var(--accent-strong), transparent);
+      opacity: 0;
+      transform: scaleX(0.7);
+      transform-origin: center;
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .nav-link:hover {
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .nav-link:hover::after {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    /* ---------- 主容器 ---------- */
+
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 28px 18px 60px;
+    }
+
+    /* ---------- Hero 区 ---------- */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 30px;
+      align-items: center;
+      padding: 26px 22px 26px 22px;
+      border-radius: 26px;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.16), transparent 55%),
+                  linear-gradient(to bottom right, #020617, #020617, #020617, #020617);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 0 0, rgba(148, 163, 184, 0.08) 0, transparent 55%),
+                        radial-gradient(circle at 100% 100%, rgba(148, 163, 184, 0.1) 0, transparent 55%);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .hero-left {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 3px 11px 3px 4px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .hero-tag-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, #facc15, #f97316 50%, #b91c1c 100%);
+      box-shadow: 0 0 22px rgba(248, 250, 252, 0.6);
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0 0 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 32rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .hero-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 11.5px;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .btn-primary {
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 500;
+      border: none;
+      background: linear-gradient(to right, var(--accent-strong), #6366f1);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.65);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 40px rgba(37, 99, 235, 0.9);
+    }
+
+    .btn-ghost {
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.1s ease, border-color 0.1s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: var(--accent);
+    }
+
+    .hero-right {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-card {
+      width: min(320px, 100%);
+      border-radius: 24px;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.25), transparent 58%),
+                  radial-gradient(circle at bottom, rgba(129, 140, 248, 0.22), transparent 55%),
+                  #020617;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      padding: 14px 14px 16px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-avatar-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      margin-bottom: 10px;
+      background: #020617;
+    }
+
+    /* 这里放你的头像或照片 */
+    .hero-avatar {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .hero-card-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+    }
+
+    .hero-card-name {
+      font-weight: 600;
+    }
+
+    .hero-card-role {
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .hero-card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .hero-card-badge {
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      font-size: 10px;
+      color: var(--text-muted);
+    }
+
+    /* ---------- 通用 section ---------- */
+
+    .section {
+      margin-top: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* ---------- Research / Projects 卡片 ---------- */
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(129, 140, 248, 0.09), transparent 55%),
+                  rgba(15, 23, 42, 0.96);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 13px;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .card-meta {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .card-body {
+      font-size: 13px;
+      color: #e5e7eb;
+      margin-bottom: 8px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .card-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .card-link {
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .card-link:hover {
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    /* ---------- 图片 Gallery ---------- */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: #020617;
+      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.7);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      bottom: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.78);
+      font-size: 11px;
+      color: var(--text-muted);
+      backdrop-filter: blur(10px);
+    }
+
+    /* ---------- Contact ---------- */
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      padding: 14px 16px 14px;
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 18px;
+      align-items: center;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.8);
+    }
+
+    .contact-item {
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .contact-label {
+      color: var(--text-muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-value {
+      font-size: 13px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .contact-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.9);
+      cursor: pointer;
+    }
+
+    .contact-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent-strong);
+    }
+
+    .contact-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ---------- 响应式 ---------- */
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-right {
+        order: -1;
+      }
+      .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .nav-inner {
+        padding-inline: 14px;
+      }
+      .page {
+        padding-inline: 14px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none; /* 手机上直接隐藏导航按钮，简单粗暴 */
+      }
+      .hero {
+        padding-inline: 16px;
+      }
+      .page {
+        padding-inline: 12px;
+      }
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hi, I'm Jiaqi</h1>
-  <p>M.Eng / future PhD in computational neuroscience & AI for science.</p>
+  <!-- 顶部导航 -->
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <div class="nav-logo-circle"></div>
+        <div class="nav-title">Jiaqi&nbsp;Shen</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#research" class="nav-link">Research</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <h2>Research Interests</h2>
-  <ul>
-    <li>Behavior-neural data fusion (IMU, DLC, UWB)</li>
-    <li>Unsupervised behavior segmentation</li>
-    <li>Hippocampal memory & navigation</li>
-  </ul>
+  <main class="page">
+    <!-- Hero 区 -->
+    <section class="hero" id="about">
+      <div class="hero-left">
+        <div class="hero-tag">
+          <div class="hero-tag-dot"></div>
+          <span>Computational neuroscience · AI for science</span>
+        </div>
+        <h1 class="hero-title">Hi, I’m Jiaqi.</h1>
+        <p class="hero-subtitle">
+          I build machine learning tools for large-scale behavioral and neural data,
+          with a focus on freely behaving animals and hippocampal memory systems.
+        </p>
+        <div class="hero-meta">
+          <span class="hero-pill">M.Eng @ Cornell ECE</span>
+          <span class="hero-pill">Behavior–Neural analysis</span>
+          <span class="hero-pill">IMU · DLC · UWB fusion</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#research" class="btn-primary">
+            View research overview
+            <span>↘</span>
+          </a>
+          <a href="#contact" class="btn-ghost">
+            Contact
+          </a>
+        </div>
+      </div>
 
-  <h2>Contact</h2>
-  <p>Email: your_email@xxx.edu</p>
-  <p>GitHub: <a href="https://github.com/你的用户名">github.com/你的用户名</a></p>
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hero-avatar-wrap">
+            <!-- ⚠️ 这里替换成你的照片路径，比如 ./images/profile.jpg -->
+            <img
+              src="https://via.placeholder.com/600x400.png?text=Your+Photo+Here"
+              alt="Profile photo"
+              class="hero-avatar"
+            />
+          </div>
+          <div class="hero-card-info">
+            <div>
+              <div class="hero-card-name">Jiaqi Shen</div>
+              <div class="hero-card-role">Behavior & neural data · Cornell</div>
+            </div>
+            <div class="hero-card-badges">
+              <span class="hero-card-badge">Python · PyTorch</span>
+              <span class="hero-card-badge">MATLAB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Section -->
+    <section class="section" id="research">
+      <div class="section-header">
+        <h2 class="section-title">Research</h2>
+        <p class="section-subtitle">
+          Methods for understanding behavior and hippocampal circuits in naturalistic settings.
+        </p>
+      </div>
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-tag">Multimodal behavior modeling</div>
+          <h3 class="card-title">IMU + DLC + UWB fusion for rat behavior</h3>
+          <div class="card-meta">2024 – present · Cornell</div>
+          <p class="card-body">
+            Building a scalable pipeline to fuse inertial signals, keypoint tracking and
+            ultra-wideband tracking into unified representations for unsupervised
+            behavior discovery and robust decoding across indoor & outdoor environments.
+          </p>
+          <div class="card-footer">
+            <span>SLDS · self-supervised · representation learning</span>
+            <div class="card-links">
+              <!-- 替换为你自己的链接 -->
+              <a href="#" class="card-link">PDF (coming soon)</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">Neural data analysis</div>
+          <h3 class="card-title">Hippocampal coding in large environments</h3>
+          <div class="card-meta">2024 – present · Fernández-Ruiz Lab</div>
+          <p class="card-body">
+            Combining behavior segmentation with hippocampal population activity to
+            study how place cells, theta sequences and replay interact with long-range
+            exploration and goal-directed behavior in meter-scale territories.
+          </p>
+          <div class="card-footer">
+            <span>CA1 · replay · theta</span>
+            <div class="card-links">
+              <a href="#" class="card-link">Code</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section" id="projects">
+      <div class="section-header">
+        <h2 class="section-title">Selected Projects</h2>
+        <p class="section-subtitle">
+          A few things I’ve built or contributed to recently.
+        </p>
+      </div>
+      <div class="cards-grid">
+        <article class="card">
+          <div class="card-tag">Tooling</div>
+          <h3 class="card-title">End-to-end behavior pipeline</h3>
+          <div class="card-meta">Python package</div>
+          <p class="card-body">
+            A modular pipeline for loading, synchronizing and processing IMU, DLC and UWB
+            data into standardized feature tables, with support for batch processing hundreds
+            of sessions and painless visualization.
+          </p>
+          <div class="card-footer">
+            <span>pandas · polars · CLI</span>
+            <div class="card-links">
+              <a href="#" class="card-link">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">Visualization</div>
+          <h3 class="card-title">Interactive behavior maps</h3>
+          <div class="card-meta">Exploratory</div>
+          <p class="card-body">
+            Interactive maps linking trajectory, speed and discrete behaviors over time,
+            helping quickly inspect model predictions and understand failure modes
+            across environments.
+          </p>
+          <div class="card-footer">
+            <span>matplotlib · Plotly</span>
+            <div class="card-links">
+              <a href="#" class="card-link">Screenshots</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Gallery Section（可以插入很多图片） -->
+    <section class="section" id="gallery">
+      <div class="section-header">
+        <h2 class="section-title">Gallery</h2>
+        <p class="section-subtitle">
+          Experimental setups, trajectories, or just things I like.
+        </p>
+      </div>
+      <div class="gallery-grid">
+        <!-- ⚠️ 把下面三张 src 换成你自己 repo 里的图片路径，比如 ./images/rig.jpg -->
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/800x600.png?text=Experiment+Rig"
+            alt="Experiment rig"
+            class="gallery-img"
+          />
+          <div class="gallery-caption">IMU + UWB field setup</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/800x600.png?text=Trajectory"
+            alt="Trajectory example"
+            class="gallery-img"
+          />
+          <div class="gallery-caption">Outdoor trajectory & behavior labels</div>
+        </div>
+        <div class="gallery-item">
+          <img
+            src="https://via.placeholder.com/800x600.png?text=Raster+Plot"
+            alt="Neural raster"
+            class="gallery-img"
+          />
+          <div class="gallery-caption">Hippocampal activity aligned to behavior</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+      <div class="section-header">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          Always happy to chat about behavior analysis, neural coding, or tools.
+        </p>
+      </div>
+      <div class="contact-card">
+        <div>
+          <div class="contact-item">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">your_email@cornell.edu</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Ithaca, NY · USA</div>
+          </div>
+          <p class="contact-note">
+            For research-related conversations, please include a short note on your background and what
+            you’d like to discuss.
+          </p>
+        </div>
+        <div>
+          <div class="contact-label">Links</div>
+          <div class="contact-links">
+            <!-- 替换成你自己的链接 -->
+            <a class="contact-pill" href="https://github.com/your-username" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            <a class="contact-pill" href="https://scholar.google.com" target="_blank" rel="noreferrer">
+              Google Scholar
+            </a>
+            <a class="contact-pill" href="#" target="_blank" rel="noreferrer">
+              CV (PDF)
+            </a>
+            <a class="contact-pill" href="#" target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
