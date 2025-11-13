@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Jiaqi Shen | Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <title>Jiaqi Shen | Academic Homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-alt: #f7f7f7;
+      --bg-page: #eef0f4;
+      --bg-paper: #ffffff;
+      --bg-section: #f7f8fa;
       --text-main: #222222;
       --text-muted: #555555;
-      --accent: #004b8d; /* 学术蓝 */
-      --border: #dddddd;
-      --max-width: 900px;
+      --accent: #004b8d;   /* 学术蓝 */
+      --border: #dadde3;
+      --page-width: 960px;
+      --line-height: 1.7;
     }
 
     * {
@@ -22,11 +24,11 @@
 
     body {
       margin: 0;
-      padding: 0;
+      padding: 24px 12px 32px;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-      background-color: var(--bg);
+      background: var(--bg-page);
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: var(--line-height);
     }
 
     a {
@@ -38,499 +40,555 @@
       text-decoration: underline;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    /* 顶部导航：非常简洁 */
-
-    header {
-      border-bottom: 1px solid var(--border);
-      background-color: #fafafa;
-    }
-
-    .nav-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 10px 16px;
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .nav-left {
-      font-size: 18px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-right {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      font-size: 14px;
-    }
-
-    .nav-link {
-      color: var(--text-muted);
-    }
-
-    .nav-link:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /* 主体容器 */
-
-    .page {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-    }
-
-    /* 标题与章节 */
-
     h1, h2, h3 {
       font-weight: 600;
       margin: 0;
     }
 
     h1 {
-      font-size: 28px;
-      margin-bottom: 4px;
+      font-size: 30px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     h2 {
-      font-size: 20px;
-      margin-top: 32px;
-      margin-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 4px;
+      font-size: 18px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 500;
+      color: #1f3c5f;
     }
 
     h3 {
-      font-size: 16px;
+      font-size: 15px;
       margin-bottom: 2px;
     }
 
-    .section-subtitle {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-top: 2px;
-      margin-bottom: 8px;
-    }
-
-    /* 顶部 About 区：文字 + 头像 */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
-      gap: 20px;
-      align-items: flex-start;
-      margin-top: 10px;
-    }
-
-    .about-text {
-      font-size: 15px;
-    }
-
-    .about-text p {
+    p {
       margin-top: 0;
       margin-bottom: 8px;
     }
 
-    .about-meta {
-      margin-top: 8px;
-      font-size: 14px;
-      color: var(--text-muted);
+    /* 整体“纸张”容器 */
+
+    .page {
+      max-width: var(--page-width);
+      margin: 0 auto;
+      background: var(--bg-paper);
+      border-radius: 6px;
+      border: 1px solid #d0d3da;
+      padding: 24px 24px 32px;
     }
 
-    .about-meta-item {
-      margin-bottom: 3px;
+    @media (max-width: 768px) {
+      .page {
+        padding: 18px 14px 24px;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+      }
     }
 
-    .profile-card {
-      border: 1px solid var(--border);
-      background-color: var(--bg-alt);
-      padding: 10px;
-      border-radius: 2px;
-      font-size: 14px;
-    }
+    /* 顶部：姓名、简介、导航 */
 
-    .profile-photo-wrap {
-      border-radius: 2px;
-      overflow: hidden;
-      margin-bottom: 8px;
-      background-color: #e0e0e0;
-    }
-
-    .profile-name {
-      font-weight: 600;
-      font-size: 15px;
-    }
-
-    .profile-role {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    /* 列表类内容：Research / Projects */
-
-    .item-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 8px 0 0;
-    }
-
-    .item {
-      margin-bottom: 14px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid #eee;
-    }
-
-    .item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .item-title-row {
+    .header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 14px;
+      margin-bottom: 16px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 8px;
-      align-items: baseline;
-    }
-
-    .item-title {
-      font-weight: 500;
-      font-size: 15px;
-    }
-
-    .item-meta {
-      font-size: 13px;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .item-body {
-      font-size: 14px;
-      margin-top: 4px;
-    }
-
-    .item-links {
-      font-size: 13px;
-      margin-top: 4px;
-    }
-
-    /* Gallery：简单图+说明 */
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .gallery-item {
-      border-radius: 2px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background-color: #fafafa;
-    }
-
-    .gallery-img {
-      width: 100%;
-      height: 130px;
-      object-fit: cover;
-    }
-
-    .gallery-caption {
-      font-size: 12px;
-      color: var(--text-muted);
-      padding: 4px 6px 6px;
-    }
-
-    /* Contact */
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
       gap: 16px;
-      margin-top: 8px;
-      padding: 10px;
-      border-radius: 2px;
-      border: 1px solid var(--border);
-      background-color: #fafafa;
-      font-size: 14px;
+      align-items: flex-end;
     }
 
-    .contact-label {
-      font-size: 12px;
-      font-weight: 500;
+    .header-main {
+      min-width: 220px;
+    }
+
+    .header-subtitle {
+      font-size: 14px;
       color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      margin-top: 4px;
+    }
+
+    .header-contact {
+      font-size: 14px;
+      text-align: right;
+      min-width: 220px;
+    }
+
+    .header-contact div {
       margin-bottom: 2px;
     }
 
-    .contact-value {
+    .nav {
+      margin-top: 8px;
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .nav a {
+      color: var(--text-muted);
+      margin-left: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-contact, .nav {
+        text-align: left;
+      }
+      .nav a {
+        margin-left: 0;
+        margin-right: 12px;
+      }
+    }
+
+    /* About 区：左文字右简历式 info / 头像 */
+
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.4fr);
+      gap: 18px;
+      margin-bottom: 10px;
+    }
+
+    .about-text {
       font-size: 14px;
+    }
+
+    .about-card {
+      background: var(--bg-section);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      font-size: 13px;
+    }
+
+    .about-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 2px;
+    }
+
+    .about-row {
       margin-bottom: 6px;
     }
 
-    .contact-links a {
-      margin-right: 10px;
-      white-space: nowrap;
+    .about-name {
+      font-weight: 600;
+      font-size: 14px;
     }
 
-    .contact-note {
+    .about-photo-wrap {
+      margin-top: 8px;
+      border-radius: 3px;
+      overflow: hidden;
+      background: #dde0e7;
+      max-width: 160px;
+    }
+
+    .about-photo-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .about {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .about-photo-wrap {
+        max-width: 220px;
+      }
+    }
+
+    /* Section 容器：有淡背景的块 */
+
+    .section {
+      margin-top: 22px;
+    }
+
+    .section-inner {
+      background: var(--bg-section);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+
+    /* 通用 entry：左时间/单位，右内容 */
+
+    .entry {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      column-gap: 16px;
+      row-gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .entry-left {
+      color: var(--text-muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .entry-right {
+      font-size: 14px;
+    }
+
+    .entry-title-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .entry-title {
+      font-weight: 500;
+    }
+
+    .entry-affiliation {
       font-size: 13px;
       color: var(--text-muted);
-      margin-top: 4px;
+    }
+
+    .entry-location {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    ul.bullet-list {
+      margin: 4px 0 0;
+      padding-left: 18px;
+    }
+
+    ul.bullet-list li {
+      margin-bottom: 3px;
+    }
+
+    .simple-list {
+      margin: 4px 0 0;
+      padding-left: 18px;
+    }
+
+    .simple-list li {
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 640px) {
+      .entry {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .entry-left {
+        font-size: 12px;
+      }
     }
 
     /* Footer */
 
     footer {
-      border-top: 1px solid var(--border);
-      padding: 10px 16px 18px;
+      margin-top: 24px;
       font-size: 12px;
       color: var(--text-muted);
-      text-align: center;
-      margin-top: 24px;
-    }
-
-    /* 响应式 */
-
-    @media (max-width: 768px) {
-      .about-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 520px) {
-      .nav-right {
-        display: none; /* 小屏隐藏导航链接，保持极简 */
-      }
-      .gallery-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
+      text-align: right;
     }
   </style>
 </head>
 <body>
+<div class="page">
 
-  <!-- 顶部导航 -->
-  <header>
-    <div class="nav-inner">
-      <div class="nav-left">Jiaqi Shen</div>
-      <nav class="nav-right">
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#research">Research</a>
-        <a class="nav-link" href="#projects">Projects</a>
-        <a class="nav-link" href="#gallery">Gallery</a>
-        <a class="nav-link" href="#contact">Contact</a>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-main">
+      <h1>Jiaqi Shen</h1>
+      <div class="header-subtitle">
+        Computational neuroscience &amp; machine learning<br>
+        Cornell University
+      </div>
+    </div>
+    <div class="header-contact">
+      <div><a href="mailto:js3785@cornell.edu">js3785@cornell.edu</a></div>
+      <div>+1&nbsp;607&nbsp;262&nbsp;0088</div>
+      <!-- 这里可以加 GitHub / Scholar 链接 -->
+      <!-- <div><a href="https://github.com/your-username" target="_blank">GitHub</a></div> -->
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#awards">Awards</a>
       </nav>
     </div>
   </header>
 
-  <main class="page">
-
-    <!-- About -->
-    <section id="about">
-      <h1>Jiaqi Shen</h1>
-      <div class="section-subtitle">
-        Computational neuroscience · Machine learning for behavior & neural data
-      </div>
-
-      <div class="about-grid">
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="section-inner">
+      <div class="about">
         <div class="about-text">
           <p>
-            I work on large-scale behavioral and neural data in freely moving rodents,
-            with a focus on sensor fusion (IMU, video-based pose estimation, UWB) and
-            interpretable models of hippocampal circuits.
+            I am interested in large-scale behavioral and neural data in freely moving rodents,
+            with a focus on sensor fusion (IMU, video-based pose estimation, UWB) and interpretable
+            models of hippocampal circuits.
           </p>
           <p>
-            Broadly, I am interested in how to build principled models that link neural
-            activity, behavior, and environment in complex, naturalistic tasks.
+            Broadly, I aim to build principled models that link neural activity, behavior,
+            and environment in complex, naturalistic tasks.
           </p>
-
-          <div class="about-meta">
-            <div class="about-meta-item"><strong>Affiliation:</strong> Cornell University</div>
-            <div class="about-meta-item"><strong>Fields:</strong> Computational neuroscience, machine learning</div>
-          </div>
         </div>
-
-        <aside class="profile-card">
-          <div class="profile-photo-wrap">
-            <!-- ⚠️ 把这里换成你自己的头像路径，例如 ./images/profile.jpg -->
-            <img
-              src="https://via.placeholder.com/600x400.png?text=Profile+photo"
-              alt="Profile photo"
-            />
+        <aside class="about-card">
+          <div class="about-row">
+            <div class="about-label">Name</div>
+            <div class="about-name">Jiaqi Shen</div>
           </div>
-          <div class="profile-name">Jiaqi Shen</div>
-          <div class="profile-role">Behavior & neural data · Cornell</div>
+          <div class="about-row">
+            <div class="about-label">Affiliation</div>
+            <div>Cornell University</div>
+          </div>
+          <div class="about-row">
+            <div class="about-label">Fields</div>
+            <div>Computational neuroscience, machine learning</div>
+          </div>
+          <!-- 如果你想放一张很小的照片，可以解开下面注释并替换 src -->
+          <!--
+          <div class="about-photo-wrap">
+            <img src="./images/profile.jpg" alt="Jiaqi Shen">
+          </div>
+          -->
         </aside>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Research -->
-    <section id="research">
-      <h2>Research</h2>
-      <div class="section-subtitle">
-        Selected directions and ongoing work.
+  <!-- Education -->
+  <section id="education" class="section">
+    <h2>Education</h2>
+    <div class="section-inner">
+      <div class="entry">
+        <div class="entry-left">
+          Sep. 2024 &mdash; May 2025<br>
+          Cornell University
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Master of Engineering, Electrical and Computer Engineering</span>
+          </div>
+          <div class="entry-location">Ithaca, NY, USA</div>
+          <div>GPA: 3.86 / 4.00</div>
+        </div>
       </div>
 
-      <ul class="item-list">
-        <li class="item">
-          <div class="item-title-row">
-            <div class="item-title">Multimodal behavior modeling with IMU, DLC and UWB</div>
-            <div class="item-meta">2024 – present</div>
+      <div class="entry">
+        <div class="entry-left">
+          Sep. 2020 &mdash; Jun. 2024<br>
+          Huazhong University of Science and Technology
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Bachelor of Science, Artificial Intelligence</span>
           </div>
-          <div class="item-body">
-            Developing a pipeline that combines inertial measurements, pose estimation and
-            UWB tracking into a unified representation for unsupervised behavior discovery
-            and robust decoding across indoor and outdoor environments.
-          </div>
-          <div class="item-meta">
-            Topics: SLDS, self-supervised learning, cross-environment generalization.
-          </div>
-        </li>
+          <div class="entry-location">Wuhan, China</div>
+          <div>GPA: 3.70 / 4.00</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <li class="item">
-          <div class="item-title-row">
-            <div class="item-title">Hippocampal coding in large environments</div>
-            <div class="item-meta">Fernández-Ruiz Lab, Cornell</div>
+  <!-- Research Experience -->
+  <section id="research" class="section">
+    <h2>Research Experience</h2>
+    <div class="section-inner">
+
+      <div class="entry">
+        <div class="entry-left">
+          Dec. 2024 &mdash; Present<br>
+          Cornell University
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Research Assistant, AYALAB</span>
+            <span class="entry-affiliation">(Fernández-Ruiz &amp; Oliva Labs)</span>
           </div>
-          <div class="item-body">
-            Linking behavior segmentation to hippocampal population activity to study how
-            place cells, theta sequences and replay relate to exploration, local search,
-            and goal-directed behavior in meter-scale territories.
+          <ul class="bullet-list">
+            <li>Developing a multimodal semi-supervised contrastive pipeline for IMU and video to classify rodent behaviors.</li>
+            <li>Applying linear and nonlinear models to quantify the mapping between CA1 neural dynamics and behavioral states.</li>
+            <li>Conducting behavioral analyses to uncover structure and dynamics of naturalistic rat behavior.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-left">
+          Sep. 2024 &mdash; May 2025<br>
+          Cornell University
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Intern, Peter Doerschuk Group</span>
           </div>
-          <div class="item-meta">
-            Topics: CA1, replay, theta sequences, behavior segmentation.
+          <ul class="bullet-list">
+            <li>Modeled lipid nanoparticles and used the model to generate simulated cryo-EM images.</li>
+            <li>Applied YOLOv11 for lipid nanoparticle image segmentation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-left">
+          Sep. 2023 &mdash; May 2024<br>
+          HUST
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Intern, Lu's Group</span>
           </div>
-        </li>
+          <ul class="bullet-list">
+            <li>Studied how composition styles and sample relationships affect performance in deep image matting.</li>
+            <li>Analyzed how class distribution within batches during training influences model behavior.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-left">
+          Mar. 2023 &mdash; Jul. 2023<br>
+          HUST
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Intern, Lu's Group</span>
+          </div>
+          <ul class="bullet-list">
+            <li>Investigated algorithms for image matching, feature extraction, and feature selection.</li>
+            <li>Used COLMAP to reconstruct three-dimensional scenes from two-dimensional images.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-left">
+          Dec. 2021 &mdash; Feb. 2023<br>
+          HUST
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Intern, CCIIP Lab</span>
+          </div>
+          <ul class="bullet-list">
+            <li>Extracted image features using Fast R-CNN and sentence features using LSTM for visual question answering.</li>
+            <li>Performed multimodal feature fusion with shallow networks.</li>
+            <li>Mitigated long-tail issues by reshaping tail-sample distributions in latent space using surrounding head samples.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="section-inner">
+
+      <div class="entry">
+        <div class="entry-left">
+          May 2023 &mdash; Sep. 2023<br>
+          Shanghai Library
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Algorithm Design for Handwritten Chinese Classical Text Recognition</span>
+            <span class="entry-location">Shanghai, China</span>
+          </div>
+          <ul class="bullet-list">
+            <li>Developed a page segmentation strategy based on the AMPD algorithm for Chinese classical texts.</li>
+            <li>Designed a preprocessing module for PageNet tailored to handwritten Chinese characters.</li>
+            <li>Achieved &gt;95% recognition accuracy on diverse test sets provided by the Shanghai Library.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-left">
+          Mar. 2022 &mdash; Mar. 2023<br>
+          National Innovation Program
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Intelligent Vegetable Recognition System</span>
+            <span class="entry-location">Wuhan, China</span>
+          </div>
+          <ul class="bullet-list">
+            <li>Addressed few-sample challenges by interpolating points in latent space.</li>
+            <li>Built a multi-class vegetable recognition model based on Swin-Transformer.</li>
+            <li>Improved Top-5 accuracy by eight percentage points over the baseline without augmentation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-left">
+          Oct. 2020 &mdash; Jun. 2021<br>
+          National Innovation Program
+        </div>
+        <div class="entry-right">
+          <div class="entry-title-line">
+            <span class="entry-title">Image Processing Chip based on RISC-V ISA</span>
+            <span class="entry-location">Wuhan, China</span>
+          </div>
+          <ul class="bullet-list">
+            <li>Implemented save and load functionality for an image processing chip.</li>
+            <li>Used Iverilog and VVP for compilation and simulation of hardware designs.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section id="awards" class="section">
+    <h2>Awards</h2>
+    <div class="section-inner">
+      <ul class="simple-list">
+        <li><strong>First Prize</strong>, Shanghai Library Open Data Contest 2023 (OCR algorithm competition), Oct. 2023.</li>
+        <li><strong>Bronze Medal</strong>, Image Matching Challenge 2023 (CVPR Workshop, Kaggle competition), Jun. 2023.</li>
+        <li><strong>Scholarship for Extracurricular Activities and Sports</strong>, HUST (2020 &mdash; 2021).</li>
       </ul>
-    </section>
+    </div>
+  </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Selected Projects</h2>
-      <div class="section-subtitle">
-        Tools and analyses related to behavior and neural data.
-      </div>
-
-      <ul class="item-list">
-        <li class="item">
-          <div class="item-title-row">
-            <div class="item-title">End-to-end preprocessing pipeline for behavior data</div>
-            <div class="item-meta">Software · Python</div>
-          </div>
-          <div class="item-body">
-            A modular pipeline for loading, synchronizing and processing IMU, DLC and UWB data
-            into standardized feature tables, suitable for batch processing and integration
-            with downstream models.
-          </div>
-          <div class="item-links">
-            <!-- 把 # 换成真实 GitHub 链接 -->
-            <a href="#">GitHub</a>
-          </div>
-        </li>
-
-        <li class="item">
-          <div class="item-title-row">
-            <div class="item-title">Visualization of behavior and neural activity</div>
-            <div class="item-meta">Analysis & figures</div>
-          </div>
-          <div class="item-body">
-            Visualizations connecting trajectories, inferred behaviors and hippocampal activity,
-            designed to inspect model predictions and highlight structure in the data.
-          </div>
-          <div class="item-links">
-            <a href="#">Example figures</a>
-          </div>
-        </li>
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <h2>Skills</h2>
+    <div class="section-inner">
+      <ul class="simple-list">
+        <li><strong>Programming:</strong> Python, C, C++, MATLAB.</li>
+        <li><strong>ML Frameworks:</strong> PyTorch, TensorFlow.</li>
       </ul>
-    </section>
-
-    <!-- Gallery -->
-    <section id="gallery">
-      <h2>Gallery</h2>
-      <div class="section-subtitle">
-        Experimental setups, trajectories and example visualizations.
-      </div>
-
-      <div class="gallery-grid">
-        <!-- ⚠️ 把这些 src 换成你 repo 里的图片，例如 ./images/rig.jpg -->
-        <div class="gallery-item">
-          <img
-            src="https://via.placeholder.com/800x600.png?text=Experimental+setup"
-            alt="Experimental setup"
-            class="gallery-img"
-          />
-          <div class="gallery-caption">Outdoor field setup with IMU and UWB anchors.</div>
-        </div>
-        <div class="gallery-item">
-          <img
-            src="https://via.placeholder.com/800x600.png?text=Trajectory+example"
-            alt="Trajectory example"
-            class="gallery-img"
-          />
-          <div class="gallery-caption">Example trajectory with behavior labels.</div>
-        </div>
-        <div class="gallery-item">
-          <img
-            src="https://via.placeholder.com/800x600.png?text=Neural+activity"
-            alt="Neural activity"
-            class="gallery-img"
-          />
-          <div class="gallery-caption">Hippocampal population activity aligned to behavior.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="contact-grid">
-        <div>
-          <div class="contact-label">Email</div>
-          <div class="contact-value">your_email@cornell.edu</div>
-
-          <div class="contact-label">Location</div>
-          <div class="contact-value">Ithaca, NY, USA</div>
-
-          <div class="contact-note">
-            For research-related inquiries, please include a brief description of your
-            background and what you would like to discuss.
-          </div>
-        </div>
-        <div>
-          <div class="contact-label">Links</div>
-          <div class="contact-links">
-            <!-- 替换成你自己的链接 -->
-            <a href="https://github.com/your-username" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://scholar.google.com" target="_blank" rel="noreferrer">Google Scholar</a>
-            <a href="#" target="_blank" rel="noreferrer">CV (PDF)</a>
-            <a href="#" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
+    </div>
+  </section>
 
   <footer>
-    © 2025 Jiaqi Shen · Hosted on GitHub Pages.
+    Last updated: 2025 · Jiaqi Shen
   </footer>
+</div>
 </body>
 </html>
