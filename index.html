@@ -8,10 +8,10 @@
   <style>
     :root {
       --bg: #ffffff;
-      --bg-alt: #f5f5f5;
+      --bg-alt: #f7f7f7;
       --text-main: #222222;
-      --text-muted: #666666;
-      --accent: #005f9e;    /* 学术感的蓝色 */
+      --text-muted: #555555;
+      --accent: #004b8d; /* 学术蓝 */
       --border: #dddddd;
       --max-width: 900px;
     }
@@ -43,7 +43,7 @@
       display: block;
     }
 
-    /* 顶部导航 */
+    /* 顶部导航：非常简洁 */
 
     header {
       border-bottom: 1px solid var(--border);
@@ -55,7 +55,7 @@
       margin: 0 auto;
       padding: 10px 16px;
       display: flex;
-      align-items: center;
+      align-items: baseline;
       justify-content: space-between;
       gap: 12px;
     }
@@ -63,6 +63,7 @@
     .nav-left {
       font-size: 18px;
       font-weight: 600;
+      letter-spacing: 0.02em;
     }
 
     .nav-right {
@@ -86,14 +87,10 @@
     .page {
       max-width: var(--max-width);
       margin: 0 auto;
-      padding: 20px 16px 40px;
+      padding: 24px 16px 40px;
     }
 
-    /* 通用 section */
-
-    section {
-      margin-top: 32px;
-    }
+    /* 标题与章节 */
 
     h1, h2, h3 {
       font-weight: 600;
@@ -106,8 +103,9 @@
     }
 
     h2 {
-      font-size: 22px;
-      margin-bottom: 8px;
+      font-size: 20px;
+      margin-top: 32px;
+      margin-bottom: 6px;
       border-bottom: 1px solid var(--border);
       padding-bottom: 4px;
     }
@@ -124,14 +122,14 @@
       margin-bottom: 8px;
     }
 
-    /* 顶部简介区域（About） */
+    /* 顶部 About 区：文字 + 头像 */
 
     .about-grid {
       display: grid;
-      grid-template-columns: minmax(0, 2fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr);
       gap: 20px;
       align-items: flex-start;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     .about-text {
@@ -144,26 +142,28 @@
     }
 
     .about-meta {
+      margin-top: 8px;
       font-size: 14px;
       color: var(--text-muted);
-      margin-top: 8px;
     }
 
     .about-meta-item {
-      margin-bottom: 4px;
+      margin-bottom: 3px;
     }
 
     .profile-card {
       border: 1px solid var(--border);
       background-color: var(--bg-alt);
       padding: 10px;
-      border-radius: 4px;
+      border-radius: 2px;
+      font-size: 14px;
     }
 
     .profile-photo-wrap {
-      border-radius: 3px;
+      border-radius: 2px;
       overflow: hidden;
       margin-bottom: 8px;
+      background-color: #e0e0e0;
     }
 
     .profile-name {
@@ -176,7 +176,7 @@
       color: var(--text-muted);
     }
 
-    /* 列表类 Section，比如 Research / Projects */
+    /* 列表类内容：Research / Projects */
 
     .item-list {
       list-style: none;
@@ -210,6 +210,7 @@
     .item-meta {
       font-size: 13px;
       color: var(--text-muted);
+      white-space: nowrap;
     }
 
     .item-body {
@@ -222,7 +223,7 @@
       margin-top: 4px;
     }
 
-    /* Gallery */
+    /* Gallery：简单图+说明 */
 
     .gallery-grid {
       display: grid;
@@ -232,22 +233,22 @@
     }
 
     .gallery-item {
-      border-radius: 4px;
+      border-radius: 2px;
       overflow: hidden;
       border: 1px solid var(--border);
       background-color: #fafafa;
-    }
-
-    .gallery-caption {
-      font-size: 12px;
-      color: var(--text-muted);
-      padding: 4px 6px 6px;
     }
 
     .gallery-img {
       width: 100%;
       height: 130px;
       object-fit: cover;
+    }
+
+    .gallery-caption {
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 4px 6px 6px;
     }
 
     /* Contact */
@@ -258,9 +259,10 @@
       gap: 16px;
       margin-top: 8px;
       padding: 10px;
-      border-radius: 4px;
+      border-radius: 2px;
       border: 1px solid var(--border);
       background-color: #fafafa;
+      font-size: 14px;
     }
 
     .contact-label {
@@ -277,12 +279,9 @@
       margin-bottom: 6px;
     }
 
-    .contact-links {
-      font-size: 14px;
-    }
-
     .contact-links a {
       margin-right: 10px;
+      white-space: nowrap;
     }
 
     .contact-note {
@@ -299,7 +298,7 @@
       font-size: 12px;
       color: var(--text-muted);
       text-align: center;
-      margin-top: 20px;
+      margin-top: 24px;
     }
 
     /* 响应式 */
@@ -318,7 +317,7 @@
 
     @media (max-width: 520px) {
       .nav-right {
-        display: none; /* 小屏直接隐藏右侧导航链接，保持简洁 */
+        display: none; /* 小屏隐藏导航链接，保持极简 */
       }
       .gallery-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -354,13 +353,13 @@
       <div class="about-grid">
         <div class="about-text">
           <p>
-            I am currently working on large-scale behavioral and neural data in freely moving rodents,
-            focusing on sensor fusion (IMU, video-based pose estimation, UWB) and interpretable models
-            of hippocampal circuits.
+            I work on large-scale behavioral and neural data in freely moving rodents,
+            with a focus on sensor fusion (IMU, video-based pose estimation, UWB) and
+            interpretable models of hippocampal circuits.
           </p>
           <p>
-            Broadly, I am interested in how to build principled models that connect neural activity,
-            behavior, and environment in complex, naturalistic tasks.
+            Broadly, I am interested in how to build principled models that link neural
+            activity, behavior, and environment in complex, naturalistic tasks.
           </p>
 
           <div class="about-meta">
@@ -371,7 +370,7 @@
 
         <aside class="profile-card">
           <div class="profile-photo-wrap">
-            <!-- ⚠️ 把这里的 src 换成你自己的头像，例如 ./images/profile.jpg -->
+            <!-- ⚠️ 把这里换成你自己的头像路径，例如 ./images/profile.jpg -->
             <img
               src="https://via.placeholder.com/600x400.png?text=Profile+photo"
               alt="Profile photo"
@@ -387,7 +386,7 @@
     <section id="research">
       <h2>Research</h2>
       <div class="section-subtitle">
-        Selected directions and ongoing projects.
+        Selected directions and ongoing work.
       </div>
 
       <ul class="item-list">
@@ -397,9 +396,9 @@
             <div class="item-meta">2024 – present</div>
           </div>
           <div class="item-body">
-            Developing a pipeline that combines inertial measurements, pose estimation and UWB tracking
-            into a unified representation for unsupervised behavior discovery and robust decoding
-            across indoor and outdoor environments.
+            Developing a pipeline that combines inertial measurements, pose estimation and
+            UWB tracking into a unified representation for unsupervised behavior discovery
+            and robust decoding across indoor and outdoor environments.
           </div>
           <div class="item-meta">
             Topics: SLDS, self-supervised learning, cross-environment generalization.
@@ -412,9 +411,9 @@
             <div class="item-meta">Fernández-Ruiz Lab, Cornell</div>
           </div>
           <div class="item-body">
-            Linking behavior segmentation to hippocampal population activity to study how place cells,
-            theta sequences and replay relate to exploration, local search and goal-directed behavior
-            in meter-scale territories.
+            Linking behavior segmentation to hippocampal population activity to study how
+            place cells, theta sequences and replay relate to exploration, local search,
+            and goal-directed behavior in meter-scale territories.
           </div>
           <div class="item-meta">
             Topics: CA1, replay, theta sequences, behavior segmentation.
@@ -427,7 +426,7 @@
     <section id="projects">
       <h2>Selected Projects</h2>
       <div class="section-subtitle">
-        A few tools and analyses I have worked on.
+        Tools and analyses related to behavior and neural data.
       </div>
 
       <ul class="item-list">
@@ -437,12 +436,12 @@
             <div class="item-meta">Software · Python</div>
           </div>
           <div class="item-body">
-            A modular pipeline for loading, synchronizing and processing IMU, DLC and UWB data into
-            standardized feature tables, suitable for batch processing of hundreds of sessions and
-            integration with downstream models.
+            A modular pipeline for loading, synchronizing and processing IMU, DLC and UWB data
+            into standardized feature tables, suitable for batch processing and integration
+            with downstream models.
           </div>
           <div class="item-links">
-            <!-- 把 # 替换成你的 GitHub 链接 -->
+            <!-- 把 # 换成真实 GitHub 链接 -->
             <a href="#">GitHub</a>
           </div>
         </li>
@@ -453,9 +452,8 @@
             <div class="item-meta">Analysis & figures</div>
           </div>
           <div class="item-body">
-            Interactive and static visualizations connecting trajectories, inferred behaviors and
-            hippocampal activity, designed to quickly inspect model predictions and highlight
-            structure in the data.
+            Visualizations connecting trajectories, inferred behaviors and hippocampal activity,
+            designed to inspect model predictions and highlight structure in the data.
           </div>
           <div class="item-links">
             <a href="#">Example figures</a>
@@ -464,7 +462,7 @@
       </ul>
     </section>
 
-    <!-- Gallery（图片） -->
+    <!-- Gallery -->
     <section id="gallery">
       <h2>Gallery</h2>
       <div class="section-subtitle">
@@ -472,7 +470,7 @@
       </div>
 
       <div class="gallery-grid">
-        <!-- ⚠️ 把 src 换成你仓库里的图片，如 ./images/rig.jpg 等 -->
+        <!-- ⚠️ 把这些 src 换成你 repo 里的图片，例如 ./images/rig.jpg -->
         <div class="gallery-item">
           <img
             src="https://via.placeholder.com/800x600.png?text=Experimental+setup"
@@ -512,14 +510,14 @@
           <div class="contact-value">Ithaca, NY, USA</div>
 
           <div class="contact-note">
-            For research-related inquiries, please include a short note about your background and
-            what you would like to discuss.
+            For research-related inquiries, please include a brief description of your
+            background and what you would like to discuss.
           </div>
         </div>
         <div>
           <div class="contact-label">Links</div>
           <div class="contact-links">
-            <!-- 把链接换成你自己的 -->
+            <!-- 替换成你自己的链接 -->
             <a href="https://github.com/your-username" target="_blank" rel="noreferrer">GitHub</a>
             <a href="https://scholar.google.com" target="_blank" rel="noreferrer">Google Scholar</a>
             <a href="#" target="_blank" rel="noreferrer">CV (PDF)</a>
@@ -532,7 +530,7 @@
   </main>
 
   <footer>
-    © <!-- 你可以改年份 --> 2025 Jiaqi Shen · This page is hosted on GitHub Pages.
+    © 2025 Jiaqi Shen · Hosted on GitHub Pages.
   </footer>
 </body>
 </html>
