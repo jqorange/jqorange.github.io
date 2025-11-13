@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects | Jiaqi Shen</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 可选：Google 字体，不需要可以删掉这一行 -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1a73e8;     /* 主色：学术向的蓝色 */
+      --text-main: #222;
+      --text-muted: #666;
+      --bg-light: #f7f7fb;
+      --border: #e5e5ef;
+      --max-width: 900px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      color: var(--text-main);
+      background: #ffffff;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* 顶部导航 */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #ffffff;
+      border-bottom: 1px solid #f0f0f5;
+      backdrop-filter: blur(8px);
+    }
+
+    .topbar-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .nav a {
+      color: #555;
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--primary);
+      transition: width 0.18s ease-out;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav a.active {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .nav a.active::after {
+      width: 100%;
+    }
+
+    /* Hero 区 */
+
+    .hero-wrap {
+      background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.5)),
+        url("hero.jpg"); /* TODO: 换成和 index.html 同一张横幅，或其他图 */
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 70px 18px 70px;
+      position: relative;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      max-width: 580px;
+      line-height: 1.6;
+      color: #e5ecff;
+    }
+
+    /* 主内容 */
+
+    .main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 40px 18px 40px;
+    }
+
+    h2.section-title {
+      font-size: 20px;
+      margin: 34px 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2.section-title:first-of-type {
+      margin-top: 10px;
+    }
+
+    h2.section-title span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--primary);
+      display: inline-block;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 6px;
+      line-height: 1.7;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .section-block {
+      background: var(--bg-light);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      margin-top: 4px;
+    }
+
+    ul {
+      margin-top: 4px;
+      margin-bottom: 6px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 3px;
+    }
+
+    figure {
+      margin: 10px 0;
+    }
+
+    figcaption {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 18px 30px;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 700px) {
+      .hero {
+        padding: 50px 16px 50px;
+      }
+      .hero-title {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 顶部导航：Projects 这一项高亮 -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo">JIAQI SHEN</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#awards">Awards</a>
+      <a href="index.html#experience">Experience</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="index.html#publications">Publications</a>
+    </nav>
+  </div>
+</header>
+
+<!-- 顶部横幅 -->
+<div class="hero-wrap" id="top">
+  <section class="hero">
+    <h1 class="hero-title">Selected Projects</h1>
+    <p class="hero-subtitle">
+      A selection of projects on behavior &amp; neural analysis, multimodal sensor fusion,
+      and computer vision. Many of these are research-oriented; feel free to email me if
+      you would like more details or code.
+    </p>
+  </section>
+</div>
+
+<!-- 主体：项目列表 -->
+<main class="main">
+
+  <!-- Project 1: Multimodal behavior pipeline -->
+  <section>
+    <h2 class="section-title"><span class="icon"></span> Multimodal behavior pipeline (IMU + DLC + UWB)</h2>
+    <div class="section-block">
+      <p class="muted">
+        2024 – now · Cornell University · Python, pandas, NumPy, PyTorch
+      </p>
+      <p>
+        A modular preprocessing pipeline for freely moving rats in large indoor and outdoor environments.
+        The pipeline synchronizes and cleans IMU data, DeepLabCut pose estimates, and UWB tracking, and outputs
+        standardized feature tables for downstream behavior modeling and neural analysis.
+      </p>
+      <ul>
+        <li>Implements denoising, resampling, and wavelet-based features for IMU signals.</li>
+        <li>Aligns multiple sensors to a common time base and session metadata.</li>
+        <li>Designed to scale to hundreds of long sessions with minimal manual intervention.</li>
+      </ul>
+
+      <!-- 图片示例：替换为你的图 -->
+      <figure>
+        <!-- TODO: 把 src 换成实际图片，例如 projects/pipeline_overview.png -->
+        <img src="projects/pipeline_overview.png"
+             alt="Multimodal behavior pipeline overview"
+             style="max-width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+        <figcaption>
+          Overview of the multimodal behavior pipeline from raw IMU / pose / UWB to aligned features.
+        </figcaption>
+      </figure>
+
+      <!-- 视频示例：替换为你的 mp4 或删掉 -->
+      <figure>
+        <!-- TODO: 把 src 换成实际 demo，例如 projects/behavior_demo.mp4 -->
+        <video controls
+               style="max-width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+          <source src="projects/behavior_demo.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <figcaption>
+          Example session showing trajectory, behavioral labels, and IMU traces.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Project 2: UWB–IMU fusion & trajectory smoothing -->
+  <section>
+    <h2 class="section-title"><span class="icon"></span> UWB–IMU sensor fusion for trajectory estimation</h2>
+    <div class="section-block">
+      <p class="muted">
+        2025 · Cornell University · MATLAB, Python
+      </p>
+      <p>
+        Developed a lightweight sensor fusion algorithm to combine noisy UWB position estimates with high-frequency IMU signals
+        in large-scale rodent experiments. The method improves trajectory smoothness while preserving sharp turns and fast movements.
+      </p>
+      <ul>
+        <li>Implemented detrending, high-pass filtering, and proportional fusion between UWB trends and IMU-derived displacement.</li>
+        <li>Designed the codebase to integrate with downstream spatial maps and hippocampal place-field analysis.</li>
+      </ul>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin-top:8px;">
+        <!-- TODO: 替换成前/后对比图 -->
+        <img src="projects/uwb_raw.png"
+             alt="Raw UWB trajectory"
+             style="width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+        <img src="projects/uwb_fused.png"
+             alt="Fused UWB + IMU trajectory"
+             style="width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Project 3: Cryo-EM LNP simulation & segmentation -->
+  <section>
+    <h2 class="section-title"><span class="icon"></span> Cryo-EM simulation and LNP segmentation</h2>
+    <div class="section-block">
+      <p class="muted">
+        2024 – 2025 · with Peter Doerschuk · Python, MATLAB, YOLO
+      </p>
+      <p>
+        Simulated lipid nanoparticles (LNPs) and generated synthetic cryo-EM images to benchmark segmentation methods,
+        then trained YOLO-based networks to segment LNPs from noisy experimental images.
+      </p>
+      <ul>
+        <li>Built a simulation framework for generating diverse LNP geometries and contrast conditions.</li>
+        <li>Created labeled datasets and evaluated segmentation performance across SNR regimes.</li>
+      </ul>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin-top:10px;">
+        <!-- TODO: 换成模拟/分割图 -->
+        <img src="projects/lnp_sim.png"
+             alt="Simulated LNPs"
+             style="width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+        <img src="projects/lnp_seg.png"
+             alt="YOLO-based LNP segmentation"
+             style="width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Project 4: Handwritten classical Chinese OCR -->
+  <section>
+    <h2 class="section-title"><span class="icon"></span> Handwritten classical Chinese OCR</h2>
+    <div class="section-block">
+      <p class="muted">
+        Shanghai Library Open Data Contest – First Prize · 2023
+      </p>
+      <p>
+        Designed a pipeline for recognizing handwritten classical Chinese characters from scanned pages.
+        The system uses an AMPD-based page segmentation strategy and custom preprocessing to improve PageNet performance.
+      </p>
+      <ul>
+        <li>Achieved over 95% recognition accuracy on the competition test set.</li>
+        <li>Optimized for complex layouts and highly variable handwriting styles.</li>
+      </ul>
+
+      <!-- 图片 -->
+      <figure>
+        <!-- TODO: 换成你的 OCR 示例图 -->
+        <img src="projects/ocr_page.png"
+             alt="Handwritten classical Chinese OCR"
+             style="max-width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+        <figcaption>
+          Example of page segmentation and OCR results on handwritten classical Chinese manuscripts.
+        </figcaption>
+      </figure>
+
+      <!-- 可选：YouTube / Bilibili 视频演示，如果没有可以删掉这一块 -->
+      <figure>
+        <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px; border:1px solid #e3e3f0;">
+          <!-- TODO: 替换 VIDEO_ID 或者删掉整个 <iframe> 块 -->
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID"
+            title="OCR demo video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            style="position:absolute; top:0; left:0; width:100%; height:100%;"
+          ></iframe>
+        </div>
+        <figcaption>
+          Short demo of the OCR pipeline (video placeholder).
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Project 5: Image matching & SfM -->
+  <section>
+    <h2 class="section-title"><span class="icon"></span> Image matching and structure-from-motion</h2>
+    <div class="section-block">
+      <p class="muted">
+        CVPR 2023 Image Matching Challenge – Bronze Medal · COLMAP, PyTorch
+      </p>
+      <p>
+        Explored feature extraction and matching strategies for robust correspondence in challenging scenes,
+        and used COLMAP to reconstruct 3D geometry from multi-view images.
+      </p>
+      <ul>
+        <li>Evaluated different keypoint detectors and learned descriptors under viewpoint and illumination changes.</li>
+        <li>Optimized matching and RANSAC parameters to improve reconstruction robustness.</li>
+      </ul>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin-top:10px;">
+        <!-- TODO: 替换为 feature matching / 3D reconstruction 图 -->
+        <img src="projects/matching.png"
+             alt="Feature matching"
+             style="width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+        <img src="projects/sfm.png"
+             alt="3D reconstruction"
+             style="width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+      </div>
+    </div>
+  </section>
+
+  <!-- Project 6: Intelligent vegetable recognition -->
+  <section>
+    <h2 class="section-title"><span class="icon"></span> Intelligent vegetable recognition</h2>
+    <div class="section-block">
+      <p class="muted">
+        National Innovation Training Program · Swin Transformer, few-shot learning
+      </p>
+      <p>
+        Built an intelligent vegetable recognition system using Swin Transformer features and latent-space interpolation
+        to handle few-sample classes. Achieved an 8 percentage point improvement in Top-5 accuracy without data augmentation.
+      </p>
+
+      <figure>
+        <!-- TODO: 换成你的分类结果图或系统界面 -->
+        <img src="projects/vegetable_cls.png"
+             alt="Intelligent vegetable recognition"
+             style="max-width:100%; border-radius:8px; border:1px solid #e3e3f0;">
+        <figcaption>
+          Example classification results of the intelligent vegetable recognition system.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Projects · Last updated: 2025 · Jiaqi Shen
+</footer>
+
+</body>
+</html>
