@@ -5,39 +5,32 @@
   <title>Jiaqi Shen | Homepage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- 可选：Google 字体，不想用可以删掉 -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg-page: #f3f5f9;
-      --bg-card: #ffffff;
-      --bg-soft: #f8f9fc;
-      --text-main: #222222;
-      --text-muted: #636b7b;
-      --accent: #126f99;      /* 主色：偏 academic 的蓝绿色 */
-      --accent-soft: #e0f0ff; /* 淡色背景 */
-      --border: #dde1ec;
-      --radius-card: 10px;
-      --shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.06);
-      --max-width: 960px;
+      --primary: #1a73e8;     /* 主色：学术向的蓝色 */
+      --text-main: #222;
+      --text-muted: #666;
+      --bg-light: #f7f7fb;
+      --border: #e5e5ef;
+      --max-width: 900px;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
-      background: radial-gradient(circle at top left, #e6f0ff 0, #f3f5f9 35%, #f3f5f9 100%);
+      font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
       color: var(--text-main);
+      background: #ffffff;
     }
 
     a {
-      color: var(--accent);
+      color: var(--primary);
       text-decoration: none;
     }
 
@@ -45,738 +38,401 @@
       text-decoration: underline;
     }
 
-    h1, h2, h3 {
-      margin: 0;
-      font-weight: 600;
-    }
-
-    p {
-      margin: 0 0 0.6rem;
-      line-height: 1.7;
-    }
-
-    /* 整体容器 */
-
-    .page {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-    }
-
     /* 顶部导航 */
 
-    .site-header {
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #ffffff;
+      border-bottom: 1px solid #f0f0f5;
+      backdrop-filter: blur(8px);
+    }
+
+    .topbar-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 18px;
     }
 
-    .site-title {
-      font-size: 20px;
-      font-weight: 600;
+    .logo {
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #111827;
+      font-size: 14px;
     }
 
-    .site-nav {
+    .nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
+      gap: 20px;
       font-size: 13px;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
     }
 
-    .site-nav a {
-      color: var(--text-muted);
+    .nav a {
+      color: #555;
       position: relative;
       padding-bottom: 2px;
     }
 
-    .site-nav a::after {
+    .nav a::after {
       content: "";
       position: absolute;
       left: 0;
       bottom: 0;
       width: 0;
-      height: 1px;
-      background: var(--accent);
+      height: 1.5px;
+      background: var(--primary);
       transition: width 0.18s ease-out;
     }
 
-    .site-nav a:hover {
-      color: var(--accent);
+    .nav a:hover {
+      color: var(--primary);
       text-decoration: none;
     }
 
-    .site-nav a:hover::after {
+    .nav a:hover::after {
       width: 100%;
     }
 
     /* Hero 区 */
 
+    .hero-wrap {
+      background-image:
+        linear-gradient(to bottom, rgba(0,0,0,0.45), rgba(0,0,0,0.5)),
+        url("hero.jpg"); /* TODO: 换成你的横幅图片 */
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
     .hero {
-      background: linear-gradient(135deg, rgba(18,111,153,0.06), rgba(255,255,255,0.95));
-      border-radius: var(--radius-card);
-      box-shadow: var(--shadow-soft);
-      padding: 22px 22px 24px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.2fr);
-      gap: 24px;
-      margin-bottom: 24px;
-      animation: fadeInUp 0.5s ease-out;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 70px 18px 80px;
+      position: relative;
     }
 
-    .hero-heading {
-      font-size: 32px;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-
-    .hero-heading span {
-      background: linear-gradient(120deg, #126f99, #0f766e);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .hero-title {
+      font-size: 34px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
     .hero-subtitle {
-      font-size: 15px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-      max-width: 480px;
+      font-size: 16px;
+      max-width: 520px;
+      line-height: 1.6;
+      color: #e5ecff;
     }
 
-    .hero-tags {
-      font-size: 13px;
-      color: #1f2937;
-      margin-bottom: 12px;
-    }
+    /* 头像卡片 */
 
-    .hero-tags span {
-      display: inline-block;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: rgba(18,111,153,0.08);
-      margin-right: 6px;
-      margin-bottom: 4px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 6px;
-    }
-
-    .btn {
-      font-size: 13px;
-      border-radius: 999px;
-      padding: 7px 14px;
-      border: 1px solid transparent;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: background 0.2s ease-out, color 0.2s ease-out, transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
-      text-decoration: none;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, #126f99, #0f766e);
-      color: #ffffff;
-      box-shadow: 0 6px 18px rgba(15,118,110,0.25);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 9px 22px rgba(15,118,110,0.35);
-    }
-
-    .btn-ghost {
-      background: rgba(255,255,255,0.9);
-      color: #111827;
-      border-color: rgba(15,23,42,0.15);
-    }
-
-    .btn-ghost:hover {
-      background: #f3f4f6;
-      transform: translateY(-1px);
-    }
-
-    .hero-right {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-card {
-      background: var(--bg-card);
-      border-radius: 16px;
-      border: 1px solid rgba(148,163,184,0.4);
-      padding: 10px 12px 12px;
-      width: 100%;
-      max-width: 320px;
-      display: grid;
-      grid-template-rows: auto 1fr;
-      gap: 8px;
-      box-shadow: 0 12px 30px rgba(15,23,42,0.08);
-    }
-
-    .hero-image-wrap {
-      border-radius: 12px;
+    .avatar-card {
+      position: absolute;
+      right: 30px;
+      bottom: -40px;
+      width: 120px;
+      height: 120px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
       overflow: hidden;
-      background: radial-gradient(circle at top, #126f99, #0f172a);
-      min-height: 160px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .hero-image-wrap img {
+    .avatar-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
-    .hero-image-placeholder {
-      color: rgba(241,245,249,0.95);
-      font-size: 13px;
-      text-align: center;
-      padding: 20px;
+    /* 主内容 */
+
+    .main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 60px 18px 40px;
     }
 
-    .hero-meta {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .hero-meta-row {
+    h2.section-title {
+      font-size: 20px;
+      margin: 40px 0 8px;
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 2px;
+      align-items: center;
+      gap: 8px;
     }
 
-    .hero-meta-label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 11px;
-      color: #9ca3af;
+    h2.section-title span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--primary);
+      display: inline-block;
     }
 
-    /* Section 通用样式 */
-
-    .section {
-      margin-bottom: 20px;
-      animation: fadeIn 0.5s ease-out;
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0 18px;
     }
 
-    .section-header {
+    p {
+      margin-top: 0;
       margin-bottom: 6px;
+      line-height: 1.7;
     }
 
-    .section-kicker {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #9ca3af;
-      margin-bottom: 2px;
-    }
-
-    .section-title {
-      font-size: 19px;
-      color: #111827;
-    }
-
-    .section-body {
-      background: var(--bg-soft);
-      border-radius: var(--radius-card);
-      border: 1px solid var(--border);
-      padding: 10px 14px 12px;
-    }
-
-    /* 条目布局 */
-
-    .entry {
-      display: grid;
-      grid-template-columns: 150px minmax(0, 1fr);
-      column-gap: 16px;
-      row-gap: 4px;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(209,213,219,0.5);
-      font-size: 14px;
-    }
-
-    .entry:last-child {
-      border-bottom: none;
-    }
-
-    .entry-left {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .entry-right {
-      font-size: 14px;
-    }
-
-    .entry-title-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      align-items: baseline;
-      margin-bottom: 2px;
-    }
-
-    .entry-title {
-      font-weight: 500;
-    }
-
-    .entry-affiliation {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .entry-location {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 3px;
-    }
-
-    ul.bullets {
-      margin: 2px 0 0;
-      padding-left: 18px;
-    }
-
-    ul.bullets li {
-      margin-bottom: 3px;
-    }
-
-    /* Project cards */
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .project-card {
-      background: var(--bg-card);
-      border-radius: 8px;
-      border: 1px solid var(--border);
-      padding: 10px 12px;
-      font-size: 14px;
-      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, border-color 0.15s ease-out;
-    }
-
-    .project-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-soft);
-      border-color: rgba(37,99,235,0.3);
-    }
-
-    .project-title {
-      font-weight: 500;
-      margin-bottom: 2px;
-    }
-
-    .project-meta {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .project-links {
-      font-size: 12px;
-      margin-top: 4px;
-    }
-
-    .project-links a {
-      margin-right: 10px;
-    }
-
-    /* News */
-
-    .news-list {
-      font-size: 14px;
-      padding-left: 0;
-      margin: 4px 0 0;
-      list-style: none;
-    }
-
-    .news-item {
-      margin-bottom: 4px;
-    }
-
-    .news-date {
-      font-size: 12px;
-      color: var(--text-muted);
+    .label {
+      font-weight: 600;
+      color: var(--primary);
       margin-right: 6px;
     }
 
-    /* Contact */
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 11px;
+      border-radius: 999px;
+      background: #eef3ff;
+      color: #335;
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-      gap: 16px;
+    ul {
+      margin-top: 4px;
+      margin-bottom: 6px;
+      padding-left: 20px;
+    }
+
+    ul li {
+      margin-bottom: 3px;
+    }
+
+    .muted {
+      color: var(--text-muted);
       font-size: 14px;
     }
 
-    .contact-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #9ca3af;
-      margin-bottom: 2px;
+    .section-block {
+      background: var(--bg-light);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      margin-top: 4px;
     }
 
-    .contact-value {
-      margin-bottom: 6px;
+    .two-col {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 10px 18px;
+      align-items: baseline;
+      font-size: 14px;
     }
 
-    .contact-links a {
-      margin-right: 10px;
-      white-space: nowrap;
+    .two-col-label {
+      font-weight: 600;
+      color: #444;
     }
 
-    /* Footer */
+    .two-col-text {
+      color: #333;
+    }
 
     footer {
-      margin-top: 18px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 18px 30px;
       font-size: 12px;
       color: var(--text-muted);
       text-align: right;
     }
 
-    /* 响应式 */
-
-    @media (max-width: 840px) {
+    @media (max-width: 700px) {
       .hero {
-        grid-template-columns: minmax(0, 1fr);
+        padding: 50px 16px 70px;
       }
-      .hero-card {
-        max-width: 260px;
+
+      .avatar-card {
+        right: 18px;
+        bottom: -35px;
+        width: 100px;
+        height: 100px;
       }
-      .project-grid {
-        grid-template-columns: minmax(0, 1fr);
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .two-col {
+        grid-template-columns: minmax(0,1fr);
+      }
+
+      .two-col-label {
+        margin-bottom: -4px;
       }
     }
-
-    @media (max-width: 640px) {
-      .site-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .site-nav {
-        gap: 10px;
-      }
-      .entry {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .entry-left {
-        font-size: 12px;
-      }
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    /* 轻微动画 */
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-
   </style>
 </head>
 <body>
-<div class="page">
 
-  <!-- 顶部导航 -->
-  <header class="site-header">
-    <div class="site-title">JIAQI SHEN</div>
-    <nav class="site-nav">
-      <a href="#top">Home</a>
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+<!-- 顶部导航 -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo">JIAQI SHEN</div>
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#awards">Awards</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <!-- Hero -->
-  <main id="top">
-    <section class="hero">
-      <div>
-        <div class="hero-heading">
-          <span>Computational Neuroscience</span>
-        </div>
-        <p class="hero-subtitle">
-          I work on large-scale behavioral and neural data in freely moving rodents,
-          focusing on sensor fusion (IMU, video, UWB) and models that link behavior
-          with hippocampal activity.
-        </p>
-        <div class="hero-tags">
-          <span>Behavior &amp; neural data</span>
-          <span>Sensor fusion</span>
-          <span>Hippocampus</span>
-        </div>
-        <div class="hero-actions">
-          <!-- TODO: 把链接换成你自己的 GitHub / CV 地址 -->
-          <a class="btn btn-primary" href="https://github.com/your-username" target="_blank" rel="noreferrer">
-            GitHub
-          </a>
-          <a class="btn btn-ghost" href="cv.pdf" target="_blank" rel="noreferrer">
-            Curriculum Vitae
-          </a>
-        </div>
-      </div>
+<!-- Hero -->
+<div class="hero-wrap" id="home">
+  <section class="hero">
+    <h1 class="hero-title">Be what you wanna be</h1>
+    <p class="hero-subtitle">
+      I am currently working on large-scale behavioral and neural data in freely moving rodents,
+      focusing on multimodal sensor fusion and interpretable models of hippocampal circuits.
+    </p>
 
-      <div class="hero-right">
-        <div class="hero-card">
-          <div class="hero-image-wrap">
-            <!-- TODO: 换成你的照片或一张轨迹/实验图，例如 ./images/profile.jpg -->
-            <!-- <img src="./images/profile.jpg" alt="Jiaqi Shen"> -->
-            <div class="hero-image-placeholder">
-              Replace this with a<br>portrait or experiment figure<br>(e.g., trajectory + labels)
-            </div>
-          </div>
-          <div class="hero-meta">
-            <div class="hero-meta-row">
-              <span class="hero-meta-label">Affiliation</span>
-              <span>Cornell University</span>
-            </div>
-            <div class="hero-meta-row">
-              <span class="hero-meta-label">Role</span>
-              <span>Research Assistant, AYALAB</span>
-            </div>
-            <div class="hero-meta-row">
-              <span class="hero-meta-label">Email</span>
-              <span>js3785@cornell.edu</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="section-header">
-        <div class="section-kicker">About</div>
-        <div class="section-title">Short bio</div>
-      </div>
-      <div class="section-body">
-        <p>
-          I am currently a Research Assistant in the Fernández-Ruiz and Oliva labs at Cornell University.
-          My work focuses on building multimodal pipelines for rodent behavior, combining IMU, pose estimation,
-          and UWB tracking, and relating them to hippocampal dynamics.
-        </p>
-        <p>
-          I am broadly interested in behavior analysis, representation learning, and the neural mechanisms of
-          navigation and memory in large, naturalistic environments.
-        </p>
-        <p>
-          Before coming to Cornell, I received my B.S. in Artificial Intelligence from Huazhong University
-          of Science and Technology, and completed an M.Eng. in Electrical and Computer Engineering at Cornell.
-        </p>
-      </div>
-    </section>
-
-    <!-- Research -->
-    <section id="research" class="section">
-      <div class="section-header">
-        <div class="section-kicker">Research</div>
-        <div class="section-title">Current directions</div>
-      </div>
-      <div class="section-body">
-
-        <div class="entry">
-          <div class="entry-left">
-            Dec. 2024 – present<br>
-            Cornell University
-          </div>
-          <div class="entry-right">
-            <div class="entry-title-row">
-              <span class="entry-title">Multimodal behavior modeling in large territories</span>
-              <span class="entry-affiliation">AYALAB (Fernández-Ruiz &amp; Oliva Labs)</span>
-            </div>
-            <ul class="bullets">
-              <li>Designing a semi-supervised contrastive pipeline for IMU and video-based features to classify rodent behaviors across indoor and outdoor environments.</li>
-              <li>Using linear and nonlinear models to map CA1 population activity onto inferred behavioral states.</li>
-              <li>Analyzing exploration/exploitation structure in long, naturalistic sessions.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-left">
-            Sep. 2024 – May 2025<br>
-            Cornell University
-          </div>
-          <div class="entry-right">
-            <div class="entry-title-row">
-              <span class="entry-title">Cryo-EM simulation and segmentation of lipid nanoparticles</span>
-              <span class="entry-affiliation">Peter Doerschuk Group</span>
-            </div>
-            <ul class="bullets">
-              <li>Built simulation models of lipid nanoparticles and generated synthetic cryo-EM images for method development.</li>
-              <li>Applied YOLO-based models to segment nanoparticles from noisy experimental images.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="entry">
-          <div class="entry-left">
-            2021 – 2024<br>
-            HUST
-          </div>
-          <div class="entry-right">
-            <div class="entry-title-row">
-              <span class="entry-title">Computer vision &amp; representation learning</span>
-              <span class="entry-affiliation">Lu’s Group &amp; CCIIP Lab</span>
-            </div>
-            <ul class="bullets">
-              <li>Worked on deep image matting, image matching and structure-from-motion reconstruction.</li>
-              <li>Explored long-tail mitigation and multimodal fusion in visual question answering.</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section">
-      <div class="section-header">
-        <div class="section-kicker">Projects</div>
-        <div class="section-title">Selected work</div>
-      </div>
-      <div class="section-body">
-        <div class="project-grid">
-          <article class="project-card">
-            <div class="project-title">Behavior pipeline: IMU + DLC + UWB</div>
-            <div class="project-meta">Python · batch preprocessing · feature engineering</div>
-            <p>
-              A modular pipeline for loading, synchronizing, and processing IMU, pose (DLC), and UWB tracking
-              into standardized feature tables suitable for large-scale behavior modeling.
-            </p>
-            <div class="project-links">
-              <!-- TODO: 换成真实仓库地址 -->
-              <a href="#" target="_blank" rel="noreferrer">Code (private / on request)</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-title">Handwritten Chinese classical text recognition</div>
-            <div class="project-meta">Shanghai Library Open Data Contest · First Prize</div>
-            <p>
-              Developed a page-segmentation strategy based on the AMPD algorithm and a preprocessing module
-              for PageNet tailored to handwritten Chinese characters, achieving &gt;95% recognition accuracy.
-            </p>
-          </article>
-
-          <article class="project-card">
-            <div class="project-title">Intelligent vegetable recognition</div>
-            <div class="project-meta">National Innovation Program</div>
-            <p>
-              Built a Swin-Transformer-based model and used latent-space interpolation to handle few-sample
-              classes, improving Top-5 accuracy by eight percentage points without augmentation.
-            </p>
-          </article>
-
-          <article class="project-card">
-            <div class="project-title">Image matching and SfM</div>
-            <div class="project-meta">CVPR 2023 Image Matching Challenge · Bronze Medal</div>
-            <p>
-              Investigated feature extraction and matching schemes for robust correspondence and used COLMAP
-              to reconstruct 3D scenes from multi-view images.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- News / updates（可选） -->
-    <section class="section">
-      <div class="section-header">
-        <div class="section-kicker">News</div>
-        <div class="section-title">Recent updates</div>
-      </div>
-      <div class="section-body">
-        <ul class="news-list">
-          <!-- TODO: 以后有事就往这里加 -->
-          <li class="news-item">
-            <span class="news-date">2025</span>
-            <span>Working on multimodal behavior models and hippocampal dynamics in large outdoor environments.</span>
-          </li>
-          <li class="news-item">
-            <span class="news-date">2023</span>
-            <span>First Prize in the Shanghai Library Open Data Contest (OCR track) and Bronze Medal in the CVPR Image Matching Challenge.</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="section-header">
-        <div class="section-kicker">Contact</div>
-        <div class="section-title">Get in touch</div>
-      </div>
-      <div class="section-body contact-grid">
-        <div>
-          <div class="contact-label">Email</div>
-          <div class="contact-value">
-            <a href="mailto:js3785@cornell.edu">js3785@cornell.edu</a>
-          </div>
-
-          <div class="contact-label">Location</div>
-          <div class="contact-value">Ithaca, NY, USA</div>
-
-          <p style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">
-            For research-related inquiries, please include a brief description of your background
-            and what you would like to discuss.
-          </p>
-        </div>
-        <div>
-          <div class="contact-label">Links</div>
-          <div class="contact-links">
-            <!-- TODO: 把这些都换成你自己的链接 -->
-            <a href="https://github.com/your-username" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="#" target="_blank" rel="noreferrer">Google Scholar</a>
-            <a href="cv.pdf" target="_blank" rel="noreferrer">CV (PDF)</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 Jiaqi Shen · Built for GitHub Pages.
-  </footer>
+    <!-- 头像：把 avatar.jpg 换成你自己的图片 -->
+    <div class="avatar-card">
+      <img src="avatar.jpg" alt="profile photo">
+    </div>
+  </section>
 </div>
+
+<!-- 主体内容 -->
+<main class="main">
+
+  <!-- 简介 + 联系方式 -->
+  <section>
+    <h2 class="section-title"><span class="icon"></span> Profile</h2>
+    <p>
+      <span class="label">Jiaqi Shen</span> 沈佳琦
+    </p>
+    <p class="muted">
+      Research Assistant, AYALAB (Fernández-Ruiz &amp; Oliva Labs), Cornell University.
+      Previously M.Eng. in Electrical and Computer Engineering at Cornell and B.S. in Artificial Intelligence at HUST.
+    </p>
+
+    <div class="divider"></div>
+
+    <p><span class="label">Email</span><a href="mailto:js3785@cornell.edu">js3785@cornell.edu</a></p>
+    <p><span class="label">GitHub</span><a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
+
+    <div class="divider"></div>
+
+    <p><span class="label">Research Interests</span></p>
+    <p>
+      <span class="tag">Behavior &amp; neural data</span>
+      <span class="tag">Sensor fusion</span>
+      <span class="tag">Hippocampus</span>
+      <span class="tag">Representation learning</span>
+    </p>
+  </section>
+
+  <!-- Education -->
+  <section>
+    <h2 class="section-title"><span class="icon"></span> Education</h2>
+    <div class="section-block">
+      <p><strong>Cornell University</strong>, M.Eng. Electrical and Computer Engineering, 2024–2025</p>
+      <p class="muted">GPA: 3.86 / 4.00</p>
+      <div class="divider"></div>
+      <p><strong>Huazhong University of Science and Technology</strong>, B.S. Artificial Intelligence, 2020–2024</p>
+      <p class="muted">GPA: 3.70 / 4.00</p>
+    </div>
+  </section>
+
+  <!-- Awards -->
+  <section id="awards">
+    <h2 class="section-title"><span class="icon"></span> Awards</h2>
+    <div class="section-block">
+      <ul>
+        <li>First Prize, Shanghai Library Open Data Contest (OCR track), 2023.</li>
+        <li>Bronze Medal, CVPR 2023 Image Matching Challenge (Kaggle), 2023.</li>
+        <li>Scholarship for Extracurricular Activities and Sports, HUST, 2020–2021.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2 class="section-title"><span class="icon"></span> Experience</h2>
+
+    <div class="section-block">
+      <div class="two-col">
+        <div class="two-col-label">
+          2024 – now<br>
+          Cornell University
+        </div>
+        <div class="two-col-text">
+          <strong>Research Assistant, AYALAB</strong> (Fernández-Ruiz &amp; Oliva Labs)<br>
+          <span class="muted">Computational neuroscience &amp; behavior</span>
+          <ul>
+            <li>Multimodal behavior pipeline combining IMU, pose (DLC) and UWB tracking.</li>
+            <li>Semi-supervised models to classify rodent behaviors in indoor/outdoor environments.</li>
+            <li>Linking CA1 activity to inferred behavioral states.</li>
+          </ul>
+        </div>
+
+        <div class="two-col-label">
+          2024 – 2025<br>
+          Cornell University
+        </div>
+        <div class="two-col-text">
+          <strong>Intern, Peter Doerschuk Group</strong><br>
+          <span class="muted">Cryo-EM simulation &amp; segmentation</span>
+          <ul>
+            <li>Modeled lipid nanoparticles and generated simulated cryo-EM images.</li>
+            <li>Applied YOLO-based models for LNP segmentation.</li>
+          </ul>
+        </div>
+
+        <div class="two-col-label">
+          2021 – 2024<br>
+          HUST
+        </div>
+        <div class="two-col-text">
+          <strong>Undergraduate Research (Lu’s group &amp; CCIIP Lab)</strong><br>
+          <ul>
+            <li>Deep image matting, image matching and SfM reconstruction using COLMAP.</li>
+            <li>Long-tail mitigation and multimodal fusion for visual question answering.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications（现在可以先写 TBD，以后再补） -->
+  <section id="publications">
+    <h2 class="section-title"><span class="icon"></span> Publications</h2>
+    <div class="section-block">
+      <p class="muted">Coming soon. Preprints and manuscripts in preparation.</p>
+      <!-- 以后可以按下面格式往这里加
+      <ol>
+        <li><strong>Shen, J.</strong>, Coauthor, X., et al. "Title." Journal, year.</li>
+      </ol>
+      -->
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Last updated: 2025 · Jiaqi Shen
+</footer>
+
 </body>
 </html>
