@@ -1,0 +1,1044 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Jiaqi Shen | Cornell University</title>
+
+  <meta name="description"
+        content="Jiaqi Shen is a Ph.D. student in Biomedical Engineering at Cornell University, studying hippocampal population coding, naturalistic behavior, and computational neuroscience.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1a73e8;
+      --primary-dark: #1557b0;
+      --text-main: #222;
+      --text-muted: #666;
+      --bg-light: #f7f8fc;
+      --border: #e5e8f0;
+      --max-width: 950px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Nunito", -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", system-ui, sans-serif;
+      color: var(--text-main);
+      background: #ffffff;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    a:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+    }
+
+    /* Navigation */
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .nav a {
+      color: #555;
+      position: relative;
+      padding-bottom: 3px;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.2s ease;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+
+    .hero-wrap {
+      background-color: #19334e;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.48),
+          rgba(0, 0, 0, 0.60)
+        ),
+        url("hero.jpg");
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+    }
+
+    .hero {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 65px 22px 85px;
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      max-width: 650px;
+      line-height: 1.8;
+      color: #e5ecff;
+      margin-bottom: 0;
+    }
+
+    .hero-affiliation {
+      margin-top: 18px;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d0e0ff;
+    }
+
+    /* Profile photo */
+
+    .avatar-card {
+      position: absolute;
+      right: 30px;
+      bottom: -48px;
+      width: 130px;
+      height: 130px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.20);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Main content */
+
+    .main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 70px 22px 45px;
+    }
+
+    section {
+      scroll-margin-top: 90px;
+      margin-bottom: 45px;
+    }
+
+    h2.section-title {
+      font-size: 21px;
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+    }
+
+    h2.section-title span.icon {
+      width: 9px;
+      height: 22px;
+      border-radius: 4px;
+      background: var(--primary);
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    p {
+      margin-top: 0;
+      margin-bottom: 10px;
+      line-height: 1.75;
+    }
+
+    .label {
+      font-weight: 700;
+      color: var(--primary);
+      margin-right: 8px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 11px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 999px;
+      background: #edf3ff;
+      color: #31558c;
+      margin-right: 6px;
+      margin-bottom: 8px;
+    }
+
+    ul {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 22px;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      line-height: 1.7;
+    }
+
+    .section-block {
+      background: var(--bg-light);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      margin-top: 8px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 22px 24px;
+      align-items: start;
+      font-size: 14px;
+    }
+
+    .two-col-label {
+      font-weight: 700;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    .two-col-text {
+      color: #333;
+      line-height: 1.75;
+    }
+
+    .two-col-text strong {
+      font-size: 15px;
+    }
+
+    .two-col-text ul {
+      margin-bottom: 0;
+    }
+
+    /* Research cards */
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .research-card {
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 10px;
+      padding: 22px;
+      transition:
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .research-card:hover {
+      box-shadow: 0 7px 22px rgba(0, 0, 0, 0.06);
+      transform: translateY(-2px);
+    }
+
+    .research-card h3 {
+      font-size: 16px;
+      margin: 0 0 10px;
+      font-weight: 800;
+    }
+
+    .research-card p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 0;
+    }
+
+    .research-card .tag {
+      margin-bottom: 12px;
+    }
+
+    /* Publications */
+
+    .publication-item {
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .publication-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .publication-title {
+      font-weight: 800;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .publication-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .status {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #47638d;
+      background: #e9effb;
+      border-radius: 5px;
+      padding: 3px 8px;
+      margin-top: 8px;
+    }
+
+    /* Footer */
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 15px 22px 35px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 700px) {
+
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .nav {
+        gap: 12px;
+        font-size: 11px;
+      }
+
+      .hero {
+        padding: 48px 18px 78px;
+      }
+
+      .hero-subtitle {
+        font-size: 14px;
+        padding-right: 0;
+      }
+
+      .avatar-card {
+        right: 18px;
+        bottom: -38px;
+        width: 100px;
+        height: 100px;
+      }
+
+      .main {
+        padding: 65px 18px 30px;
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .two-col-text {
+        margin-bottom: 18px;
+      }
+
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-block {
+        padding: 16px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========================================
+       Navigation
+       ======================================== -->
+
+  <header class="topbar">
+    <div class="topbar-inner">
+
+      <div class="logo">JIAQI SHEN</div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#education">Education</a>
+        <a href="#awards">Awards</a>
+        <a href="#experience">Experience</a>
+        <a href="#publications">Publications</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- ========================================
+       Hero
+       ======================================== -->
+
+  <div class="hero-wrap" id="home">
+
+    <section class="hero">
+
+      <p class="hero-subtitle">
+        I am a Ph.D. student in Biomedical Engineering at
+        Cornell University, interested in understanding
+        how neural populations represent the world,
+        integrate behavior and sensory experience,
+        and adapt across different environments.
+      </p>
+
+      <div class="hero-affiliation">
+        Computational &amp; Systems Neuroscience · Cornell University
+      </div>
+
+      <!-- Replace with your own profile image -->
+      <div class="avatar-card">
+        <img src="avatar.jpg" alt="Jiaqi Shen">
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <!-- ========================================
+       Main
+       ======================================== -->
+
+  <main class="main">
+
+
+    <!-- ======================================
+         About
+         ====================================== -->
+
+    <section id="about">
+
+      <h2 class="section-title">
+        <span class="icon"></span>
+        About Me
+      </h2>
+
+      <p>
+        <span class="label">Jiaqi Shen</span>
+        沈佳琦
+      </p>
+
+      <p>
+        I am a Ph.D. student in the
+        <strong>Department of Biomedical Engineering</strong>
+        at <strong>Cornell University</strong>,
+        working with the
+        <strong>Fernández-Ruiz and Oliva Labs (AYALAB)</strong>.
+      </p>
+
+      <p>
+        My research lies at the intersection of
+        <strong>systems neuroscience, computational neuroscience,
+        and machine learning</strong>.
+        I am particularly interested in how the hippocampus
+        encodes spatial and behavioral information during
+        naturalistic behavior, and how the structure and
+        dimensionality of neural population activity
+        change across environments.
+      </p>
+
+      <p>
+        My work combines large-scale neural recordings,
+        multimodal behavioral measurements, statistical
+        modeling, and computational simulations.
+        More broadly, I am interested in neural dynamics,
+        plasticity, learning, and the computational
+        principles underlying adaptive neural representations.
+      </p>
+
+      <p>
+        Before beginning my Ph.D., I received an M.Eng.
+        in Electrical and Computer Engineering from Cornell
+        University and a B.S. in Artificial Intelligence
+        from Huazhong University of Science and Technology.
+      </p>
+
+      <div class="divider"></div>
+
+      <p>
+        <span class="label">Affiliation</span>
+        Cornell University, Ithaca, NY, USA
+      </p>
+
+      <p>
+        <span class="label">Email</span>
+        <a href="mailto:js3785@cornell.edu">
+          js3785@cornell.edu
+        </a>
+      </p>
+
+      <!--
+        TODO: Replace USERNAME with your actual GitHub username,
+        then uncomment the following block.
+
+        <p>
+          <span class="label">GitHub</span>
+          <a href="https://github.com/USERNAME"
+             target="_blank"
+             rel="noopener noreferrer">
+            github.com/USERNAME
+          </a>
+        </p>
+      -->
+
+      <div class="divider"></div>
+
+      <p>
+        <span class="label">Research Interests</span>
+      </p>
+
+      <div>
+        <span class="tag">Hippocampal Circuits</span>
+        <span class="tag">Neural Population Dynamics</span>
+        <span class="tag">Spatial Navigation</span>
+        <span class="tag">Naturalistic Behavior</span>
+        <span class="tag">Mixed Selectivity</span>
+        <span class="tag">Population Dimensionality</span>
+        <span class="tag">Neural Plasticity</span>
+        <span class="tag">Computational Modeling</span>
+        <span class="tag">Machine Learning</span>
+      </div>
+
+    </section>
+
+
+    <!-- ======================================
+         Research
+         ====================================== -->
+
+    <section id="research">
+
+      <h2 class="section-title">
+        <span class="icon"></span>
+        Research
+      </h2>
+
+      <p class="muted">
+        My current research focuses on hippocampal
+        representations during naturalistic behavior,
+        with an emphasis on connecting population-level
+        neural activity to behavioral and environmental
+        variables.
+      </p>
+
+      <div class="research-grid">
+
+        <!-- Research 1 -->
+
+        <div class="research-card">
+
+          <span class="tag">Hippocampus</span>
+          <span class="tag">Population Coding</span>
+
+          <h3>
+            Neural Representations in Naturalistic Environments
+          </h3>
+
+          <p>
+            Investigating how hippocampal CA1 neurons
+            encode spatial and behavioral variables during
+            indoor and outdoor foraging.
+            I study changes in place-cell representations,
+            mixed selectivity, and the dimensionality
+            of neural population activity across
+            different environments.
+          </p>
+
+        </div>
+
+
+        <!-- Research 2 -->
+
+        <div class="research-card">
+
+          <span class="tag">Behavior</span>
+          <span class="tag">Sensor Fusion</span>
+
+          <h3>
+            Multimodal Behavioral Quantification
+          </h3>
+
+          <p>
+            Developing computational pipelines that
+            integrate inertial measurements, pose estimation,
+            spatial tracking, and head-mounted video
+            to characterize rodent behavior.
+            This includes behavioral classification and
+            relating movement, posture, and behavioral
+            states to neural activity.
+          </p>
+
+        </div>
+
+
+        <!-- Research 3 -->
+
+        <div class="research-card">
+
+          <span class="tag">Computational Neuroscience</span>
+          <span class="tag">Neural Coding</span>
+
+          <h3>
+            Computational Models of Neural Representations
+          </h3>
+
+          <p>
+            Using encoding models and computational
+            simulations to understand how spatial
+            structure and behavioral modulation shape
+            hippocampal population activity.
+            My work examines place-field organization,
+            mixed selectivity, population dimensionality,
+            and the mechanisms that may generate
+            these representations.
+          </p>
+
+        </div>
+
+
+        <!-- Research 4 -->
+
+        <div class="research-card">
+
+          <span class="tag">Research Interests</span>
+          <span class="tag">Neural Dynamics</span>
+
+          <h3>
+            Learning, Plasticity, and Network Dynamics
+          </h3>
+
+          <p>
+            I am also interested in how neural networks
+            learn and reorganize their internal dynamics.
+            Current exploratory interests include recurrent
+            neural networks, dynamical criticality,
+            representation learning, and the relationship
+            between plasticity and adaptive computation.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================
+         Education
+         ====================================== -->
+
+    <section id="education">
+
+      <h2 class="section-title">
+        <span class="icon"></span>
+        Education
+      </h2>
+
+      <div class="section-block">
+
+        <p>
+          <strong>Cornell University</strong>
+          <span class="muted"> · 2026–Present</span>
+        </p>
+
+        <p>
+          Ph.D. in Biomedical Engineering
+        </p>
+
+        <p class="muted">
+          Cornell University, Ithaca, NY
+        </p>
+
+        <div class="divider"></div>
+
+        <p>
+          <strong>Cornell University</strong>
+          <span class="muted"> · 2024–2025</span>
+        </p>
+
+        <p>
+          M.Eng. in Electrical and Computer Engineering
+        </p>
+
+        <p class="muted">
+          GPA: 3.86 / 4.00
+        </p>
+
+        <div class="divider"></div>
+
+        <p>
+          <strong>
+            Huazhong University of Science and Technology
+          </strong>
+          <span class="muted"> · 2020–2024</span>
+        </p>
+
+        <p>
+          B.S. in Artificial Intelligence
+        </p>
+
+        <p class="muted">
+          GPA: 3.70 / 4.00
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================
+         Honors and Awards
+         ====================================== -->
+
+    <section id="awards">
+
+      <h2 class="section-title">
+        <span class="icon"></span>
+        Honors &amp; Awards
+      </h2>
+
+      <div class="section-block">
+
+        <ul>
+
+          <li>
+            <strong>
+              Trainee Professional Development Award (TPDA)
+            </strong>,
+            Society for Neuroscience (SfN), 2026.
+          </li>
+
+          <li>
+            <strong>
+              First Prize, Shanghai Library Open Data Contest
+            </strong>
+            (OCR Track), 2023.
+          </li>
+
+          <li>
+            <strong>
+              Bronze Medal, CVPR 2023 Image Matching Challenge
+            </strong>
+            (Kaggle), 2023.
+          </li>
+
+          <li>
+            <strong>
+              Scholarship for Extracurricular Activities
+              and Sports
+            </strong>,
+            Huazhong University of Science and Technology,
+            2020–2021.
+          </li>
+
+        </ul>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================
+         Research Experience
+         ====================================== -->
+
+    <section id="experience">
+
+      <h2 class="section-title">
+        <span class="icon"></span>
+        Research Experience
+      </h2>
+
+      <div class="section-block">
+
+        <div class="two-col">
+
+          <!-- AYALAB -->
+
+          <div class="two-col-label">
+            2024–Present
+            <br>
+            Cornell University
+          </div>
+
+          <div class="two-col-text">
+
+            <strong>
+              Researcher, AYALAB
+            </strong>
+
+            <br>
+
+            <span class="muted">
+              Fernández-Ruiz &amp; Oliva Labs
+              <br>
+              Systems and Computational Neuroscience
+            </span>
+
+            <ul>
+              <li>
+                Investigating hippocampal population
+                representations during naturalistic
+                indoor and outdoor foraging.
+              </li>
+
+              <li>
+                Analyzing place-cell properties,
+                mixed selectivity, population
+                dimensionality, and behavioral modulation
+                of CA1 neural activity.
+              </li>
+
+              <li>
+                Developing multimodal behavioral analysis
+                pipelines using IMU, DeepLabCut,
+                spatial tracking, and head-mounted cameras.
+              </li>
+
+              <li>
+                Applying statistical encoding models,
+                population-level analyses, and computational
+                simulations to study neural representations.
+              </li>
+            </ul>
+
+          </div>
+
+
+          <!-- Doerschuk Group -->
+
+          <div class="two-col-label">
+            2024–2025
+            <br>
+            Cornell University
+          </div>
+
+          <div class="two-col-text">
+
+            <strong>
+              Research Intern, Peter Doerschuk Group
+            </strong>
+
+            <br>
+
+            <span class="muted">
+              Computational Imaging &amp; Cryo-Electron Microscopy
+            </span>
+
+            <ul>
+              <li>
+                Developed computational simulations
+                of lipid nanoparticles and generated
+                synthetic cryo-electron microscopy images.
+              </li>
+
+              <li>
+                Applied YOLO-based deep learning methods
+                to lipid nanoparticle segmentation.
+              </li>
+            </ul>
+
+          </div>
+
+
+          <!-- HUST -->
+
+          <div class="two-col-label">
+            2021–2024
+            <br>
+            HUST
+          </div>
+
+          <div class="two-col-text">
+
+            <strong>
+              Undergraduate Research
+            </strong>
+
+            <br>
+
+            <span class="muted">
+              Lu's Group &amp; CCIIP Lab
+              <br>
+              Computer Vision and Machine Learning
+            </span>
+
+            <ul>
+              <li>
+                Worked on deep image matting,
+                image matching, and structure-from-motion
+                reconstruction using COLMAP.
+              </li>
+
+              <li>
+                Investigated long-tail learning
+                and multimodal fusion methods
+                for visual question answering.
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ======================================
+     Publications
+     ====================================== -->
+
+<section id="publications">
+
+  <h2 class="section-title">
+    <span class="icon"></span>
+    Publications
+  </h2>
+
+  <div class="section-block">
+    <p class="muted">
+      Coming soon.
+    </p>
+  </div>
+
+</section>
+
+  </main>
+
+
+  <!-- ========================================
+       Footer
+       ======================================== -->
+
+  <footer>
+
+    <div>
+      © 2026 Jiaqi Shen · Cornell University
+    </div>
+
+    <div>
+      Last updated: November 2026
+    </div>
+
+  </footer>
+
+</body>
+</html>
